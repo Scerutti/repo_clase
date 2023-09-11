@@ -62,7 +62,36 @@ La iteración es un proceso en el que recorremos elementos en una colección, co
   incrementar(); // Mostrará 'Contador: 2'
 ```
 
-# Call, Bind y Apply
+# Uso de `this` en JavaScript
+
+El `this` en JavaScript se refiere al contexto de ejecución de una función y puede cambiar según cómo se llama la función.
+
+## Concepto básico de `this`
+
+- `this` representa el contexto en el que se ejecuta una función.
+- Puede ser global o específico de un objeto.
+
+## Contexto global
+
+- Fuera de cualquier función, `this` se refiere al objeto global (`window` en un navegador o `global` en Node.js).
+
+```javascript
+console.log(this === window); // true en un navegador
+```
+
+## Dentro de una funcion
+- En funciones normales, this se refiere al objeto que llama la función.
+```javascript
+const persona = {
+  nombre: "Juan",
+  saludar: function() {
+    console.log("Hola, soy " + this.nombre);
+  }
+};
+
+persona.saludar(); // Esto imprimirá "Hola, soy Juan"
+```
+# Cambios de contexto - Call, Bind y Apply
 
 * 'call()', 'bind()', y 'apply()' son métodos que permiten cambiar la forma en que se llama a una función y controlar el valor de this.
 
