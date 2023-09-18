@@ -29,12 +29,11 @@ Hay muchas más estructuras de datos, pero estas son las más importantes. La el
 
 ## Resumen
 
-¡Has completado la aventura de las estructuras de datos! Aquí tienes una tabla para recordar cuándo usar cada estructura:
+¡Hemos completado la aventura de las estructuras de datos! Aca tenemos una tabla para recordar cuándo usar cada estructura:
 
 | Estructura         | Ventajas                        | Desventajas                    |
 | ------------------ | ------------------------------- | ------------------------------- |
 | Arreglo            | Rápida inserción, acceso rápido | Búsqueda y borrado lentos      |
-| Arreglo Ordenado   | Buena búsqueda                  | Igual que el arreglo normal    |
 | Pila               | Fácil de usar (LIFO)            | Acceso lento a otros elementos |
 | Cola               | Fácil de usar (FIFO)            | Acceso lento a otros elementos |
 | Lista Enlazada     | Inserción y borrado rápidos     | Búsqueda lenta                 |
