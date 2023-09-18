@@ -41,3 +41,39 @@ Hay muchas más estructuras de datos, pero estas son las más importantes. La el
 | Árbol AVL          | Búsqueda rápida                 | Inserción y borrado lentos     |
 | Heap               | Inserción y borrado rápidos     | Acceso lento a otros elementos |
 | Hash               | Búsqueda y inserción rápidas    | Borrado lento, uso de memoria  |
+
+
+
+## Ejemplos de Arbol Binario
+```javascript
+function createTreeNode(value) {
+  return {
+    value,
+    left: null,
+    right: null,
+  };
+}
+
+function insertBinaryTree(root, value) {
+  if (!root) {
+    return createTreeNode(value);
+  }
+
+  if (value < root.value) {
+    root.left = insertBinaryTree(root.left, value);
+  } else if (value > root.value) {
+    root.right = insertBinaryTree(root.right, value);
+  }
+
+  return root;
+}
+
+// Ejemplo de uso
+let binaryTreeRoot = null;
+binaryTreeRoot = insertBinaryTree(binaryTreeRoot, 10);
+binaryTreeRoot = insertBinaryTree(binaryTreeRoot, 5);
+binaryTreeRoot = insertBinaryTree(binaryTreeRoot, 20);
+```
+
+En este ejemplo, creamos un árbol binario con nodos que contienen valores. El nodo root es la raíz del árbol, y cada nodo tiene uno o dos hijos (izquierdo y derecho).
+
