@@ -14,7 +14,10 @@ function createAVLTreeNode(value) {
 }
 
 function getHeight(node) {
-  return node ? node.height : 0;
+  if(node){
+    return node.height;
+  }
+  return 0;
 }
 
 function balanceFactor(node) {
