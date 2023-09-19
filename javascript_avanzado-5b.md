@@ -112,6 +112,42 @@ function insertBST(root, value) {
   return root;
 }
 
+function deleteBST(root, value) {
+  if (!root) {
+    return root;
+  }
+
+  if (value < root.value) {
+    root.left = deleteBST(root.left, value);
+  } else if (value > root.value) {
+    root.right = deleteBST(root.right, value);
+  } else {
+    // Caso 1: Nodo con un solo hijo o sin hijos
+    if (!root.left) {
+      return root.right;
+    } else if (!root.right) {
+      return root.left;
+    }
+
+    // Caso 2: Nodo con dos hijos, encontrar el sucesor inorden (el valor mínimo en el subárbol derecho)
+    root.value = minValue(root.right);
+
+    // Eliminar el sucesor inorden
+    root.right = deleteBST(root.right, root.value);
+  }
+
+  return root;
+}
+
+function minValue(node) {
+  let minValue = node.value;
+  while (node.left) {
+    minValue = node.left.value;
+    node = node.left;
+  }
+  return minValue;
+}
+
 // Ejemplo de uso
 let bstRoot = null;
 bstRoot = insertBST(bstRoot, 10);
