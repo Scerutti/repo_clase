@@ -1,36 +1,3 @@
-## Ejemplos de Arbol Binario
-```javascript
-function createTreeNode(value) {
-  return {
-    value,
-    left: null,
-    right: null,
-  };
-}
-
-function insertBinaryTree(root, value) {
-  if (!root) {
-    return createTreeNode(value);
-  }
-
-  if (value < root.value) {
-    root.left = insertBinaryTree(root.left, value);
-  } else if (value > root.value) {
-    root.right = insertBinaryTree(root.right, value);
-  }
-
-  return root;
-}
-
-// Ejemplo de uso
-let binaryTreeRoot = null;
-binaryTreeRoot = insertBinaryTree(binaryTreeRoot, 10);
-binaryTreeRoot = insertBinaryTree(binaryTreeRoot, 5);
-binaryTreeRoot = insertBinaryTree(binaryTreeRoot, 20);
-```
-
-En este ejemplo, creamos un árbol binario con nodos que contienen valores. El nodo root es la raíz del árbol, y cada nodo tiene uno o dos hijos (izquierdo y derecho).
-
 ## Ejemplo de AVL (es una alternativa a BST)
 
 ### Que es AVL?
@@ -47,7 +14,10 @@ function createAVLTreeNode(value) {
 }
 
 function getHeight(node) {
-  return node ? node.height : 0;
+  if(node){
+    return node.height;
+  }
+  return 0;
 }
 
 function balanceFactor(node) {
@@ -140,6 +110,42 @@ function insertBST(root, value) {
   }
 
   return root;
+}
+
+function deleteBST(root, value) {
+  if (!root) {
+    return root;
+  }
+
+  if (value < root.value) {
+    root.left = deleteBST(root.left, value);
+  } else if (value > root.value) {
+    root.right = deleteBST(root.right, value);
+  } else {
+    // Caso 1: Nodo con un solo hijo o sin hijos
+    if (!root.left) {
+      return root.right;
+    } else if (!root.right) {
+      return root.left;
+    }
+
+    // Caso 2: Nodo con dos hijos, encontrar el sucesor inorden (el valor mínimo en el subárbol derecho)
+    root.value = minValue(root.right);
+
+    // Eliminar el sucesor inorden
+    root.right = deleteBST(root.right, root.value);
+  }
+
+  return root;
+}
+
+function minValue(node) {
+  let minValue = node.value;
+  while (node.left) {
+    minValue = node.left.value;
+    node = node.left;
+  }
+  return minValue;
 }
 
 // Ejemplo de uso
